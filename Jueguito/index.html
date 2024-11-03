@@ -6,6 +6,7 @@
     <title>Juego de Vestir</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <h1 id="title">Presiona START para comenzar a vestir</h1>
@@ -18,6 +19,24 @@
     <img id="cabello3" src="assets/cabello/cabello 3.png" alt="Cabello3" class="cabello3" style="display: none;">
     <img id="cabello4" src="assets/cabello/cabello 4.png" alt="Cabello4" class="cabello4" style="display: none;">
 
+    <!-- Imágenes de vestidos -->
+    <img id="vestido1" src="assets/Vestidos/Vestido 1.png" alt="Vestido1" class="vestido1" style="display: none;">
+    <img id="vestido2" src="assets/Vestidos/Vestido 2.png" alt="Vestido2" class="vestido2" style="display: none;">
+    <img id="vestido3" src="assets/Vestidos/Vestido 3.png" alt="Vestido3" class="vestido3" style="display: none;">
+    <img id="vestido4" src="assets/Vestidos/Vestido 4.png" alt="Vestido4" class="vestido4" style="display: none;">
+
+    <!-- Imágenes de zapatos -->
+    <img id="zapato1" src="assets/Zapatos/Zapatos 1.png" alt="Zapato1" class="zapato1" style="display: none;">
+    <img id="zapato2" src="assets/Zapatos/Zapatos 2.png" alt="Zapato2" class="zapato2" style="display: none;">
+    <img id="zapato3" src="assets/Zapatos/Zapatos 3.png" alt="Zapato3" class="zapato3" style="display: none;">
+    <img id="zapato4" src="assets/Zapatos/Zapatos 4.png" alt="Zapato4" class="zapato4" style="display: none;">
+
+    <!-- Imágenes de accesorios -->
+    <img id="accesorio1" src="assets/Accesorios/Accesorio 1.png" alt="Accesorio1" class="accesorio1" style="display: none;">
+    <img id="accesorio2" src="assets/Accesorios/Accesorio 2.png" alt="Accesorio2" class="accesorio2" style="display: none;">
+    <img id="accesorio3" src="assets/Accesorios/Accesorio 3.png" alt="Accesorio3" class="accesorio3" style="display: none;">
+    <img id="accesorio4" src="assets/Accesorios/Accesorio 4.png" alt="Accesorio4" class="accesorio4" style="display: none;">
+
     <div class="start-button-container">
         <button class="start-button">
             <p>Start</p>
@@ -29,7 +48,7 @@
         <img class="option-prenda" src="./assets/cabello/cabello 1.png" alt="">
         <button class="option-button">
             <p>A</p>
-            <img src="assets/boton.png" alt="Start Button" class="option-image">
+            <img src="assets/boton.png" alt="Option A" class="option-image">
         </button>
     </div>
 
@@ -37,7 +56,7 @@
         <img class="option-prenda" src="./assets/cabello/cabello 2.png" alt="">
         <button class="option-button">
             <p>B</p>
-            <img src="assets/boton.png" alt="Start Button" class="option-image">
+            <img src="assets/boton.png" alt="Option B" class="option-image">
         </button>
     </div>
 
@@ -45,7 +64,7 @@
         <img class="option-prenda" src="./assets/cabello/cabello 3.png" alt="">
         <button class="option-button">
             <p>C</p>
-            <img src="assets/boton.png" alt="Start Button" class="option-image">
+            <img src="assets/boton.png" alt="Option C" class="option-image">
         </button>
     </div>
 
@@ -53,7 +72,7 @@
         <img class="option-prenda" src="./assets/cabello/cabello 4.png" alt="">
         <button class="option-button">
             <p>D</p>
-            <img src="assets/boton.png" alt="Start Button" class="option-image">
+            <img src="assets/boton.png" alt="Option D" class="option-image">
         </button>
     </div>
 
@@ -63,66 +82,6 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
-        const title = document.getElementById('title');
-        const startButton = document.querySelector('.start-button');
-        const startText = startButton.querySelector('p');
-        const palabraElement = document.getElementById('palabra').querySelector('p');
-
-        const buttonA = document.querySelector('.a-button-container .option-button');
-        const buttonB = document.querySelector('.b-button-container .option-button');
-        const buttonC = document.querySelector('.c-button-container .option-button');
-        const buttonD = document.querySelector('.d-button-container .option-button');
-
-        // Imágenes de cabello
-        const cabello1 = document.getElementById('cabello1');
-        const cabello2 = document.getElementById('cabello2');
-        const cabello3 = document.getElementById('cabello3');
-        const cabello4 = document.getElementById('cabello4');
-
-        let buttonsShown = false;
-
-        startButton.addEventListener('click', () => {
-            if (!buttonsShown) {
-                document.querySelector('.a-button-container').style.display = 'flex';
-                document.querySelector('.b-button-container').style.display = 'flex';
-                document.querySelector('.c-button-container').style.display = 'flex';
-                document.querySelector('.d-button-container').style.display = 'flex';
-                title.style.display = 'none';
-                startText.innerText = 'Ok';
-                startText.classList.add('ok-text');
-                buttonsShown = true;
-            }
-            palabraElement.innerText += 'e';
-        });
-
-        function mostrarCabello(cabelloSeleccionado) {
-            [cabello1, cabello2, cabello3, cabello4].forEach(cabello => {
-                cabello.style.display = 'none'; // Oculta todas las imágenes de cabello
-            });
-            cabelloSeleccionado.style.display = 'block'; // Muestra solo la imagen seleccionada
-        }
-
-        buttonA.addEventListener('click', () => {
-            palabraElement.innerText += 'A';
-            mostrarCabello(cabello1);
-        });
-
-        buttonB.addEventListener('click', () => {
-            palabraElement.innerText += 'B';
-            mostrarCabello(cabello2);
-        });
-
-        buttonC.addEventListener('click', () => {
-            palabraElement.innerText += 'C';
-            mostrarCabello(cabello3);
-        });
-
-        buttonD.addEventListener('click', () => {
-            palabraElement.innerText += 'D';
-            mostrarCabello(cabello4);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

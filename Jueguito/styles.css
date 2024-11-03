@@ -133,6 +133,7 @@ h1{
     width: 320px;
     height: auto;
     opacity: 1;
+    z-index: 2
 }
 
 .vestido2 {
@@ -143,6 +144,8 @@ h1{
     width: 309px;
     height: auto;
     opacity: 1;
+    z-index: 2
+
 }
 
 .vestido3 {
@@ -153,6 +156,8 @@ h1{
     width: 316px;
     height: auto;
     opacity: 1;
+    z-index: 2
+
 }
 
 .vestido4 {
@@ -163,6 +168,8 @@ h1{
     width: 320px;
     height: auto;
     opacity: 1;
+    z-index: 2
+
 }
 
 .accesorio1 {
@@ -306,4 +313,3 @@ h1{
 .option-img_container img{
     width: 350px;
 }
-
