@@ -53,7 +53,6 @@ startButton.addEventListener('click', () => {
         palabraElement.innerText += 'e'; // Muestra la letra 'e' al inicio
         buttonsShown = true;
     }
-
     if (cabelloSeleccionado && !etapaVestidos) {
         etapaVestidos = true;
         palabraElement.innerText += 'e'; // Agrega otra 'e' al pasar a la etapa de vestidos
@@ -166,6 +165,7 @@ function finalizarJuego() {
     palabraElement.style.top = '10px';
     palabraElement.style.left = '50%';
     palabraElement.style.transform = 'translateX(-50%)';
+    palabraElement.innerText += 'e'; // Indica que el personaje está completo
 
     // Muestra una explosión de confeti
     confetti({
