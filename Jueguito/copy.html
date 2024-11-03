@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Vestir</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="title">Presiona START para comenzar a vestir</h1>
+    <div class="background"></div>
+    <img src="assets/character.png" alt="Personaje" class="character">
+    <!-- <img src="assets/Zapatos/Zapatos 1.png" alt="Zapato1" class="zapato1">  -->
+    <!-- <img src="assets/Zapatos/Zapatos 2.png" alt="Zapato2" class="zapato2"> -->
+    <!-- <img src="assets/Zapatos/Zapatos 3.png" alt="Zapato3" class="zapato3"> -->
+    <!-- <img src="assets/Zapatos/Zapatos 4.png" alt="Zapato4" class="zapato4"> -->
+    <!-- <img src="assets/cabello/cabello 1.png" alt="Cabello1" class="cabello1"> -->
+    <!-- <img src="assets/cabello/cabello 2.png" alt="Cabello2" class="cabello2"> -->
+    <!-- <img src="assets/cabello/cabello 3.png" alt="Cabello3" class="cabello3"> -->
+    <!-- <img src="assets/cabello/cabello 4.png" alt="Cabello4" class="cabello4"> -->
+    <!-- <img src="assets/Vestidos/Vestido 1.png" alt="Vestido1" class="vestido1"> -->
+    <!-- <img src="assets/Vestidos/Vestido 2.png" alt="Vestido2" class="vestido2"> -->
+    <!-- <img src="assets/Vestidos/Vestido 3.png" alt="Vestido3" class="vestido3"> -->
+    <!-- <img src="assets/Vestidos/Vestido 4.png" alt="Vestido4" class="vestido4"> -->
+    <!-- <img src="assets/Accesorios/Accesorio 1.png" alt="Accesorio1" class="accesorio1"> -->
+    <!-- <img src="assets/Accesorios/Accesorio 2.png" alt="Accesorio2" class="accesorio2"> -->
+    <!-- <img src="assets/Accesorios/Accesorio 3.png" alt="Accesorio3" class="accesorio3"> -->
+    <!-- <img src="assets/Accesorios/Accesorio 4.png" alt="Accesorio4" class="accesorio4"> -->
+
+    <div class="start-button-container">
+        <button class="start-button">
+            <p>Start</p>
+            <img src="assets/estrella.png" alt="Start Button" class="start-image">
+        </button>
+    </div>
+
+    <div class="a-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 1.png" alt="">
+
+        <button class="option-button">
+            <p>A</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div class="b-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 2.png" alt="">
+
+        <button class="option-button">
+            <p>B</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div class="c-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 3.png" alt="">
+
+        <button class="option-button">
+            <p>C</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div class="d-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 4.png" alt="">
+
+        <button class="option-button">
+            <p>D</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div id="palabra">
+        <p>Palabra:</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const title = document.getElementById('title')
+        // Selecciona el botón Start y el contenedor de "palabra"
+        const startButton = document.querySelector('.start-button');
+        const startText = startButton.querySelector('p');
+        const palabraElement = document.getElementById('palabra').querySelector('p');
+    
+        // Selecciona los botones A, B, C y D
+        const buttonA = document.querySelector('.a-button-container .option-button');
+        const buttonB = document.querySelector('.b-button-container .option-button');
+        const buttonC = document.querySelector('.c-button-container .option-button');
+        const buttonD = document.querySelector('.d-button-container .option-button');
+    
+        // Variable de control para mostrar los botones una sola vez
+        let buttonsShown = false;
+    
+        // Agrega el evento de clic al botón Start
+        startButton.addEventListener('click', () => {
+            // Muestra los botones A, B, C y D solo la primera vez que se hace clic
+            if (!buttonsShown) {
+                document.querySelector('.a-button-container').style.display = 'flex';
+                document.querySelector('.b-button-container').style.display = 'flex';
+                document.querySelector('.c-button-container').style.display = 'flex';
+                document.querySelector('.d-button-container').style.display = 'flex';
+                document.getElementById('title').style.display = 'none'
+                startText.innerText = 'Ok'; // Cambia el texto a "Ok"
+                startText.classList.add('ok-text'); // Aplica la clase para cambiar estilo
+                buttonsShown = true; // Marca que ya se ha mostrado los botones
+            }
+            // Concatenar una 'e' al texto de "palabra" cada vez que se presiona el botón
+            palabraElement.innerText += 'e';
+        });
+    
+        // Agrega eventos de clic a los botones A, B, C y D para escribir su letra en #palabra
+        buttonA.addEventListener('click', () => {
+            palabraElement.innerText += 'A';
+        });
+    
+        buttonB.addEventListener('click', () => {
+            palabraElement.innerText += 'B';
+        });
+    
+        buttonC.addEventListener('click', () => {
+            palabraElement.innerText += 'C';
+        });
+    
+        buttonD.addEventListener('click', () => {
+            palabraElement.innerText += 'D';
+        });
+    </script>
+    
+</body>
+</html>

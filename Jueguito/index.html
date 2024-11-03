@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Vestir</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="title">Presiona START para comenzar a vestir</h1>
+    <div class="background"></div>
+    <img src="assets/character.png" alt="Personaje" class="character">
+
+    <!-- Imágenes de cabello -->
+    <img id="cabello1" src="assets/cabello/cabello 1.png" alt="Cabello1" class="cabello1" style="display: none;">
+    <img id="cabello2" src="assets/cabello/cabello 2.png" alt="Cabello2" class="cabello2" style="display: none;">
+    <img id="cabello3" src="assets/cabello/cabello 3.png" alt="Cabello3" class="cabello3" style="display: none;">
+    <img id="cabello4" src="assets/cabello/cabello 4.png" alt="Cabello4" class="cabello4" style="display: none;">
+
+    <div class="start-button-container">
+        <button class="start-button">
+            <p>Start</p>
+            <img src="assets/estrella.png" alt="Start Button" class="start-image">
+        </button>
+    </div>
+
+    <div class="a-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 1.png" alt="">
+        <button class="option-button">
+            <p>A</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div class="b-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 2.png" alt="">
+        <button class="option-button">
+            <p>B</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div class="c-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 3.png" alt="">
+        <button class="option-button">
+            <p>C</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div class="d-button-container">
+        <img class="option-prenda" src="./assets/cabello/cabello 4.png" alt="">
+        <button class="option-button">
+            <p>D</p>
+            <img src="assets/boton.png" alt="Start Button" class="option-image">
+        </button>
+    </div>
+
+    <div id="palabra">
+        <p>Palabra:</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const title = document.getElementById('title');
+        const startButton = document.querySelector('.start-button');
+        const startText = startButton.querySelector('p');
+        const palabraElement = document.getElementById('palabra').querySelector('p');
+
+        const buttonA = document.querySelector('.a-button-container .option-button');
+        const buttonB = document.querySelector('.b-button-container .option-button');
+        const buttonC = document.querySelector('.c-button-container .option-button');
+        const buttonD = document.querySelector('.d-button-container .option-button');
+
+        // Imágenes de cabello
+        const cabello1 = document.getElementById('cabello1');
+        const cabello2 = document.getElementById('cabello2');
+        const cabello3 = document.getElementById('cabello3');
+        const cabello4 = document.getElementById('cabello4');
+
+        let buttonsShown = false;
+
+        startButton.addEventListener('click', () => {
+            if (!buttonsShown) {
+                document.querySelector('.a-button-container').style.display = 'flex';
+                document.querySelector('.b-button-container').style.display = 'flex';
+                document.querySelector('.c-button-container').style.display = 'flex';
+                document.querySelector('.d-button-container').style.display = 'flex';
+                title.style.display = 'none';
+                startText.innerText = 'Ok';
+                startText.classList.add('ok-text');
+                buttonsShown = true;
+            }
+            palabraElement.innerText += 'e';
+        });
+
+        function mostrarCabello(cabelloSeleccionado) {
+            [cabello1, cabello2, cabello3, cabello4].forEach(cabello => {
+                cabello.style.display = 'none'; // Oculta todas las imágenes de cabello
+            });
+            cabelloSeleccionado.style.display = 'block'; // Muestra solo la imagen seleccionada
+        }
+
+        buttonA.addEventListener('click', () => {
+            palabraElement.innerText += 'A';
+            mostrarCabello(cabello1);
+        });
+
+        buttonB.addEventListener('click', () => {
+            palabraElement.innerText += 'B';
+            mostrarCabello(cabello2);
+        });
+
+        buttonC.addEventListener('click', () => {
+            palabraElement.innerText += 'C';
+            mostrarCabello(cabello3);
+        });
+
+        buttonD.addEventListener('click', () => {
+            palabraElement.innerText += 'D';
+            mostrarCabello(cabello4);
+        });
+    </script>
+</body>
+</html>
